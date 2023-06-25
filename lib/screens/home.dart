@@ -59,9 +59,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       Controller.addDescriptionController.text,
                       Controller.dateController.text.toString()));
                   cleaningController();
-
                   Navigator.pop(context);
-
                   setState(() {});
                 },
                 child: const Text('Save')),
