@@ -1,6 +1,4 @@
-import 'package:datetime_picker_formfield_new/datetime_picker_formfield.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 
 import '../controller/tf_controller.dart';
 import '../model/task_model.dart';
@@ -14,7 +12,6 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   List<Task> myTask = [];
-  final format = DateFormat("yyyy-MM-dd");
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,7 +23,7 @@ class _HomeScreenState extends State<HomeScreen> {
               showBottomSheet(context, index);
             },
             title: Text(myTask[index].title),
-            trailing: Text("By ${myTask[index].dateTime}"),
+            trailing: Text(myTask[index].dateTime),
             subtitle: Text(myTask[index].description),
           );
         },
@@ -91,21 +88,13 @@ class _HomeScreenState extends State<HomeScreen> {
                   height: 20,
                 ),
                 SizedBox(
-                  child: DateTimeField(
+                  child: TextField(
+                    keyboardType: TextInputType.number,
                     decoration: const InputDecoration(
                       label: Text("Deadline"),
                       border: OutlineInputBorder(),
                     ),
-                    format: format,
                     controller: Controller.dateController,
-                    onShowPicker: (context, currentValue) {
-                      return showDatePicker(
-                        context: context,
-                        firstDate: DateTime(1900),
-                        initialDate: currentValue ?? DateTime.now(),
-                        lastDate: DateTime(2100),
-                      );
-                    },
                   ),
                 )
               ],
